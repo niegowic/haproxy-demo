@@ -9,6 +9,6 @@ jobs:
       - name: Build & publish images
         run: |
           #!/bin/bash
-          docker login -u="${{ secrets.DOCKER_LOGIN }}" -p="{{ secrets.DOCKER_PASS }}";
+          docker login -u="${{ secrets.DOCKER_LOGIN }}" -p="${{ secrets.DOCKER_PASS }}";
           docker-compose build --pull;
           docker-compose push;
