@@ -1,0 +1,13 @@
+name: Build docker images
+on: [workflow_dispatch]
+jobs:
+  Build-docker-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v2
+      - name: Build & publish images
+        run:
+          docker login -u="${{ secrets.DOCKER_LOGIN }} -p="{{ secrets.DOCKER_PASS }}"
+          docker-compose build --pull
+          docker-compose push
